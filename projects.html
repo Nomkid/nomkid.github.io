@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-purple.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Nomkid! Dashboard</title>
+    <style>
+        .page-content {
+            padding: 1em;
+        }
+
+        .mdl-button--bottom-right {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+
+        .table-fullwidth {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Dashboard</span>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Project</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Started Date</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Started Date</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <td>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="name1" value='"Project1"'>
+                                <label class="mdl-textfield__label" for="name1">Name</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                                <label class="mdl-button mdl-js-button mdl-button--icon" for="date1">
+                                    <i class="material-icons">today</i>
+                                </label>
+                                <div class="mdl-textfield__expandable-holder">
+                                    <input class="mdl-textfield__input" type="text" id="date1">
+                                    <label class="mdl-textfield__label" for="date1">Date</label>
+                                </div>
+                            </div>
+                        </td>
+                        <td><input class="mdl-slider mdl-js-slider" id="progress1" type="range" min="0" max="100"
+                                value="1" tabindex="0"></td>
+                        <td>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                                <label class="mdl-button mdl-js-button mdl-button--icon" for="status1">
+                                    <i class="material-icons">local_offer</i>
+                                </label>
+                                <div class="mdl-textfield__expandable-holder">
+                                    <input class="mdl-textfield__input" type="text" id="status1">
+                                    <label class="mdl-textfield__label" for="status1">Status</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tbody>
+                </table><br>
+                <button disabled
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                    id="updateButton">Update</button>
+                <button
+                    class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--accent mdl-button--bottom-right">
+                    <i class="material-icons">add</i>
+                </button>
+                <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        $("#name1, #date1, #progress1, status1").change(() => {
+            $("#updateButton").attr("disabled", false);
+        });
+        $("#updateButton").click(() => {
+            $("#updateButton").attr("disabled", true);
+            var handler = function (event) {
+            };
+            document.querySelector('#snackbar').MaterialSnackbar.showSnackbar({
+                message: "Table updated. (Just a reminder that this page is incomplete and doesn't do anything yet.)",
+                timeout: 5000,
+                actionHandler: handler,
+                actionText: 'Undo'
+            });
+        });
+    </script>
+</body>
+
+</html>
